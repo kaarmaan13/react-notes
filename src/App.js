@@ -1,4 +1,5 @@
-import "./styles.css";
+import "./styles.css"
+import {Note} from './Note.js'
 
 const notes = [
   {
@@ -19,27 +20,18 @@ const notes = [
     date: "2019-05-30T19:20:14.298Z",
     important: true
   }
-];
+]
 
 export default function App() {
   if (typeof notes === "undefined" || notes.length === 0) {
-    return "No hay notas que mostrar.";
+    return "No hay notas que mostrar."
   } else {
-    return (
-      <div>
-        {notes.map((note) => {
-          return (
-            <div>
-              <p>
-                {note.content}
-                <small>
-                  <time>{note.date}</time>
-                </small>
-              </p>
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
+      return (
+        <div className="App">
+          { notes.map(note =>(
+            <Note {...note} key={note.id} />
+          )) }
+        </div>
+      )
+    }
 }
